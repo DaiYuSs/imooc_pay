@@ -27,9 +27,10 @@ public class PayService implements IPayService {
      * @param amount  支付的金额
      * @author ljj
      * @date 2020/7/6 14:02
+     * @return
      */
     @Override
-    public void create(String orderId, BigDecimal amount) {
+    public PayResponse create(String orderId, BigDecimal amount) {
         WxPayConfig wxPayConfig = new WxPayConfig();
         wxPayConfig.setAppId("wxd898fcb01713c658");
         wxPayConfig.setMchId("1483469312");
@@ -47,5 +48,6 @@ public class PayService implements IPayService {
 
         PayResponse response = bestPayService.pay(request);
         log.info("response={}", response);
+        return response;
     }
 }
